@@ -1,4 +1,5 @@
 image: docker:latest
+
 services:
   - docker:dind
 
@@ -6,17 +7,17 @@ stages:
   - build
   - package
 
+before_script:
+  - echo "Set up any global configurations here."
+
 .generic_angular_job:
   include:
-   - local: '/generic_angular_job.yml'
-
-
-
+    - local: '/generic_angular_job.yml'
 
 build_frontend:
   script:
-    - echo "generic file is included successfully"
-  extends: generic_angular_job  # Extend the generic Angular job
+    - echo "Generic file is included successfully."
+  extends: .generic_angular_job  # Extend the generic Angular job
 
 docker_package_frontend:
   stage: package
@@ -26,4 +27,3 @@ docker_package_frontend:
   script:
     - docker build -t abdellahah/devops-angular .
     - docker push abdellahah/devops-angular
-
