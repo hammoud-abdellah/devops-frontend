@@ -29,5 +29,5 @@ docker_package_frontend:
     - export DOCKER_HOST=tcp://docker:2375
     - docker login -u abdellahah -p $DOCKER_HUB_PASSWORD
   script:
-    - docker build -t abdellahah/devops-angular .
-    - docker push abdellahah/devops-angular
+    - docker build -t abdellahah/devops-angular1 .
+    - docker push abdellahah/devops-angular1
