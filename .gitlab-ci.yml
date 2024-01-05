@@ -17,7 +17,7 @@ before_script:
 build_frontend:
   script:
     - echo "Generic file is included successfully."
-  extends: .generic_angular_job  # Extend the generic Angular job
+  extends: generic_angular_job  # Extend the generic Angular job
 
 docker_package_frontend:
   stage: package
