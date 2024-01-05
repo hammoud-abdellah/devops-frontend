@@ -1,5 +1,5 @@
+# .gitlab-ci-angular.yml
 image: docker:latest
-
 services:
   - docker:dind
 
@@ -7,15 +7,26 @@ stages:
   - build
   - package
 
-before_script:
-  - echo "Set up any global configurations here."
+cache:
+  key: ${CI_COMMIT_REF_SLUG}-npm
+  paths:
+    - node_modules/
 
 
+build_frontend:
+  stage: build
+  image: node:18
+  script:
+    - npm install
+    - npm run build --prod
 
 docker_package_frontend:
   stage: package
+  # rules:
+  #   - changes: 
+  #     - /**
   before_script:
-    
+    - export DOCKER_HOST=tcp://docker:2375
     - docker login -u abdellahah -p $DOCKER_HUB_PASSWORD
   script:
     - docker build -t abdellahah/devops-angular .
