@@ -10,14 +10,7 @@ stages:
 before_script:
   - echo "Set up any global configurations here."
 
-.generic_angular_job:
-  include:
-    - local: '/generic_angular_job.yml'
 
-build_frontend:
-  script:
-    - echo "Generic file is included successfully."
-  extends: generic_angular_job  # Extend the generic Angular job
 
 docker_package_frontend:
   stage: package
