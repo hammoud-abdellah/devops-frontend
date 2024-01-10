@@ -10,7 +10,7 @@ metadata:
 spec:
   rules:
   
-    - host: abdellah.com
+    - host: abdo-hmd.com
       http:
         paths:
           - path: /
